@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <header>
+      <h1>Tech-DEN</h1>
+      <% flash.each do |type, message| %>
+        <div class="<%= flash_class(type) %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </header>
+
     <%= yield %>
+    
   </body>
 </html>
