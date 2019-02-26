@@ -7,3 +7,10 @@ before_script:
 - bundle exec rake db:{create,migrate}
 script:
 - bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: RQqIsXMRqL2HhJTkun3xNeHKjK56IJo1LhpNa0z/O+YLtXvTz8w0PHAUYGMLrcb8QFI8GEr7/sLgrZiXePYixQpNDQnIBSCyW3IUuLcTQIMlc4VRRZsHFphSflKNz123Vd6GthsJiekpjVyQ5wyYTb1/xDG44QxA9XMQ5JncHTPJ48ieq7wvpPxb3DdIW1B3IeZDryJcJjcyw1YN7spIFoSWcgd99aaQSe6pil97RsAmiF/0qXwpIpGJEgOg8r+mf0TSEqZve2swpsodhNJHvDLR787nqxiuIiOp/36D5TxDc54TlXK/pRWdR0CyW7TyzQE1HRteAOshOgblMNt6iEoTbzZbDpVe1Hjw1eOOHfNprYHhhYVM7sl0xcYdGucaJJ4m00Zyd1gyBoFNscwgHlxuexSNrdxaUaWfQr6kTb4oy/GYBmIg+rxKdI5ZtyLPsHqGyygNjWWI7Apz63LlVh52wM6bAu4UlNtVa6YGlm3R6V8Nq3b8CQEA+2jnnxJtUghMF4axDpLmfN7sdu3S9U/2Mo9xmn3lUBLRr2QdvMG2Outl7mv/dnvUmuN+ceTnxvoGzTv3z4TZ+yZ+LKUY8SoVLwQO/2bspXB1jziWAoUWybKzCTQN/JxTakQGcfwt/vZw0KbqSfw6Jr25saXEqGYW0dZ8nGhyP5ZDDwxBORY=
+  run: 
+    - "rake db:migrate"
+    - restart

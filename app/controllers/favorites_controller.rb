@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  def index
+    @facade = FavoritesFacade.new()
+  end
+
   def create
     favorite = Favorite.new(favorite_params)
     if favorite.save
