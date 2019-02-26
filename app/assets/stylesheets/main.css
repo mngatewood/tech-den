@@ -11,7 +11,8 @@ header {
   padding-left: 24px;
   height: 120px;
   width: 100%;
-  background-color: darkblue
+  background-color: darkblue;
+  z-index: 1;
 }
 
 h1 {
@@ -62,12 +63,14 @@ main a:link {
   flex-direction: column;
   width: 54vw;
   height: 30vw;
-  padding: 2vw 4vw;
+  padding: 0 4vw;
 }
 
-.article-source-date-container {
+.article-source-date-container,
+.add-favorite-container {
   display: flex;
   flex-direction: row;
+  height: 4vw;
 }
 
 .article-source,
@@ -78,7 +81,7 @@ main a:link {
 h2 {
   position: relative;
   color: #222222;
-  font-size: 4.5vw;
+  font-size: 4.3vw;
   margin: 1vw;
   height: 20.2vw;
   overflow: hidden;
@@ -99,12 +102,26 @@ h3 {
   text-transform: uppercase;
   color: #666666;
   font-weight: bold;
-  margin: 0;
+  margin: 2vw 1vw 0 1vw;
 }
 
 h4 {
   text-align: right;
   color: #AAAAAA;
-  margin: 0;
+  margin: 2vw 1vw 0 1vw;
   font-size: 20px;
+}
+
+.add-favorite-container {
+  text-align: right;
+}
+
+.add-favorite {
+  width: 100%;
+  font-size: 20px;
+  margin: 0 1vw 2vw 1vw;
+}
+
+a.add-favorite:link {
+  text-decoration: underline;
 }
