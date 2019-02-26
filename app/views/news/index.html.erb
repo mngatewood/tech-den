@@ -1,3 +1,9 @@
+<header>
+  <h1>Tech-DEN</h1>
+  <h2 class="view-favorites">
+    <%= link_to "View Favorites", favorites_path %>
+  </h2>
+</header>
 <main>
   <% @facade.articles.each do |article| %>
     <%= link_to article[:url] do %>
