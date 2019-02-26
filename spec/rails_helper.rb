@@ -15,9 +15,10 @@ SimpleCov.start 'rails' do
   add_filter'/spec/'
   add_filter'/config/'
   add_filter'/app/channels/'
-  add_filter'app/jobs/'
-  add_filter'app/mailers/'
-  add_filter'app/helpers/'
+  add_filter'app/jobs/application_job.rb'
+  add_filter'app/mailers/application_mailer.rb'
+  add_filter'app/helpers/application_helper.rb'
+  add_filter'app/models/application_record.rb'
 end
 
 require 'vcr'
@@ -88,5 +89,4 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  Shoulda::Matchers.configure do |config|
 end

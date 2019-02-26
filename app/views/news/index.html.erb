@@ -1,0 +1,28 @@
+<body>
+  <header>
+    <h1>Tech-DEN</h1>
+  </header>
+  <main>
+    <% @facade.articles.each do |article| %>
+      <%= link_to article[:url] do %>
+        <article class="article-container">
+          <div class="article-image-container">
+            <img class="article-image" src= <%="#{article[:urlToImage]}"%> >
+          </div>
+          <div class="article-text-container">
+            <div class="article-source-date-container">
+              <div class="article-source">
+                <h3><%= article[:source][:name] %></h3>
+              </div>
+              <div class="article-published-at">
+                <h4><%= article[:publishedAt] %></h4>
+              </div>
+            </div>
+            <div class="article-title">
+              <h2><%= article[:title] %></h2>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    <% end %>
+  </main>
