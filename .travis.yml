@@ -1,4 +1,9 @@
 language: ruby
 rvm:
- - 2.4.1
-#  - jruby
+- 2.4.1
+before_install:
+- gem install bundler
+before_script:
+- bundle exec rake db:{create,migrate}
+script:
+- bundle exec rspec
