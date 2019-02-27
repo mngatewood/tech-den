@@ -112,7 +112,7 @@ h2 {
   overflow: hidden;
 }
 
-h2:after {
+h2.headline:after {
   content: "";
   text-align: right;
   position: absolute;
