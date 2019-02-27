@@ -18,11 +18,20 @@ From GitHub clone down repository using the following commands in terminal:
 
 ## How to Use
 
+### Installing Dependencies
+
 In the project directory run:
 
     bundle install
 
 to install all the dependencies.
+
+### Setting Up the Database
+
+    rake db:create
+    rake db:migrate
+
+will create and build a local database for development and testing.
 
 ### Running the Server Locally
 
