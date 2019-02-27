@@ -23,7 +23,11 @@
           <div class="article-title">
             <h2><%= article[:title] %></h2>
           </div>
-          <div class="add-favorite-container">
+          <div class="delete-favorite-container">
+            <%= link_to "Delete Favorite", 
+              delete_favorite_path(favorite: {id: article[:id]}),
+              method: :delete,
+              class: "delete-favorite" %>
           </div>
         </div>
       </article>
