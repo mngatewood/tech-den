@@ -18,6 +18,13 @@ header {
   z-index: 1;
 }
 
+main {
+  position: fixed;
+  top: 120px;
+  bottom: 120px;
+  overflow: scroll;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -51,13 +58,6 @@ h1 {
   font-size: 24px;
   text-align: center;
   width: 100%;
-}
-
-main {
-  position: fixed;
-  top: 120px;
-  bottom: 0;
-  overflow: scroll;
 }
 
 article {
