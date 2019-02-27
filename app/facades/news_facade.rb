@@ -1,19 +1,26 @@
 class NewsFacade
 
+  include DatetimeHelper
+
   def is_favorite?(url)
     Favorite.where({url: url}).exists?
   end
 
   def articles
-    return remove_duplicate_articles(news)
+    unique_articles = remove_duplicate_articles(news)
+    # add age key/value to each article
+    articles_with_age = unique_articles.map do |article| 
+      article.update({age: DatetimeHelper.convertDateToAge(article[:publishedAt])})
+    end
+    return articles_with_age
   end
 
   def remove_duplicate_articles(articles)
     # remove duplicate URLs
-    unique_url = articles.uniq {|article| article[:url]}
+    unique_urls = articles.uniq {|article| article[:url]}
     # remove duplicate titles
-    unique_title = unique_url.uniq {|article| article[:title]}
-    return unique_title
+    unique_titles = unique_urls.uniq {|article| article[:title]}
+    return unique_titles
   end
 
   def news
