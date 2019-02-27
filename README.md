@@ -60,7 +60,7 @@ To return to the home page, click the link in the upper right corner labelled "R
 ## Future Enhancements
 
 * User registration and log-in
-* Display a placeholder thumbnail when one is not provided by NewsAPI
+* Validate URLs (source article and image)
 
 ## Sole Contributor
 

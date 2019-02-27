@@ -1,3 +1,5 @@
+require 'uri'
+
 class NewsFacade
 
   include DatetimeHelper
@@ -8,9 +10,12 @@ class NewsFacade
 
   def articles
     unique_articles = remove_duplicate_articles(news)
-    # add age key/value to each article
     articles_with_age = unique_articles.map do |article| 
-      article.update({age: DatetimeHelper.convertDateToAge(article[:publishedAt])})
+      # add age key/value to each article
+      article.update({
+        age: DatetimeHelper.convertDateToAge(article[:publishedAt]),
+        urlToImage: add_thumbnail(article[:urlToImage])
+      })
     end
     return articles_with_age
   end
@@ -21,6 +26,11 @@ class NewsFacade
     # remove duplicate titles
     unique_titles = unique_urls.uniq {|article| article[:title]}
     return unique_titles
+  end
+
+  def add_thumbnail(image)
+    default_thumbnail = "https://images.unsplash.com/photo-1507071093492-031551ef451c?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
+    return image ? image : default_thumbnail
   end
 
   def news
