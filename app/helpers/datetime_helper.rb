@@ -20,7 +20,7 @@ module DatetimeHelper
     elsif hours == 1
       return hours.to_s + " hour ago"
     else
-      return "Less than an hour ago."
+      return "Less than an hour ago"
     end
   end
 end
