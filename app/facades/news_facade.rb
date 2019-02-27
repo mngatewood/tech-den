@@ -1,47 +1,26 @@
 class NewsFacade
 
+  include DatetimeHelper
+
   def is_favorite?(url)
     Favorite.where({url: url}).exists?
   end
 
   def articles
-    return remove_duplicate_articles(news)
+    unique_articles = remove_duplicate_articles(news)
+    # add age key/value to each article
+    articles_with_age = unique_articles.map do |article| 
+      article.update({age: DatetimeHelper.convertDateToAge(article[:publishedAt])})
+    end
+    return articles_with_age
   end
 
   def remove_duplicate_articles(articles)
     # remove duplicate URLs
-    unique_url = articles.uniq {|article| article[:url]}
+    unique_urls = articles.uniq {|article| article[:url]}
     # remove duplicate titles
-    unique_title = unique_url.uniq {|article| article[:title]}
-    # add age of article
-    article_age = unique_title.map do |article| 
-      article.update({age: convertDateToAge(article[:publishedAt])})
-    end
-    return article_age
-  end
-
-  def convertDateToAge(date)
-    current_time = Time.now.utc.to_s;
-    article_time = DateTime.strptime(date).to_s;
-    seconds = Time.parse(current_time) - Time.parse(article_time);
-    hours = (seconds / 3600).round
-    days = (hours / 24).round
-    weeks = (days / 7).round
-    if weeks > 1
-      return weeks.to_s + " weeks ago"
-    elsif weeks == 1
-      return weeks.to_s + " week ago"
-    elsif days > 1
-      return days.to_s + " days ago"
-    elsif days == 1
-      return days.to_s + " day ago"
-    elsif hours > 1
-      return hours.to_s + " hours ago"
-    elsif hours == 1
-      return hours.to_s + " hour ago"
-    else
-      return "Less than an hour ago."
-    end
+    unique_titles = unique_urls.uniq {|article| article[:title]}
+    return unique_titles
   end
 
   def news
