@@ -13,7 +13,7 @@ feature "user sees news index page" do
       expect(page).to have_content("Tech-DEN")
 
       # I see a list of news articles related to technology in Denver
-      expect(page).to have_css('article.article-container', count: 20)
+      expect(page).to have_css('article.article-container', count: 12)
 
       # Each article includes a title, content, source, image, url, and publishedAt
       within(first('article.article-container')) do

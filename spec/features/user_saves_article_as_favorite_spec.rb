@@ -37,14 +37,14 @@ feature "user saves an article as a favorite" do
       end
 
       #If the save fails, 
-      within(all('.add-favorite-container').last) do
+      within(all('.add-favorite-container')[8]) do
         click_link('Add to Favorites')
       end
 
       # I see a message that reads "Unable to add article to favorites."
       expect(page).to have_content('Unable to add article to favorites.')
 
-      within(all('.add-favorite-container').last) do
+      within(all('.add-favorite-container')[8]) do
         expect(page).to have_css('.add-favorite')
         expect(page).to_not have_content('Added to Favorites')     
         expect(page).to have_link('Add to Favorites')     
